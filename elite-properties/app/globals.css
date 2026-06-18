@@ -20,7 +20,6 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
-  overflow-x: hidden;
 }
 
 body {
@@ -28,7 +27,6 @@ body {
   color: #FFFFFF;
   font-family: "Inter", system-ui, sans-serif;
   width: 100%;
-  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
