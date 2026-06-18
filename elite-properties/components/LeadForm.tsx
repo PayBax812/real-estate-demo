@@ -48,7 +48,7 @@ export default function LeadForm() {
   };
 
   return (
-    <section id="consultation" className="section-padding bg-primary border-t border-white/5 relative">
+    <section id="consultation" className="section-padding bg-primary border-t border-white/5 relative overflow-hidden">
       <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

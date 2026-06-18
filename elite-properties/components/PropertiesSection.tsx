@@ -37,7 +37,7 @@ export default function PropertiesSection() {
   };
 
   return (
-    <section id="properties" className="section-padding bg-primary relative">
+    <section id="properties" className="section-padding bg-primary relative overflow-hidden">
       {/* Decorative gradient spot */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
 

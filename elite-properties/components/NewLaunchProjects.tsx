@@ -44,7 +44,7 @@ export default function NewLaunchProjects() {
   };
 
   return (
-    <section id="projects" className="section-padding bg-primary border-t border-white/5 relative">
+    <section id="projects" className="section-padding bg-primary border-t border-white/5 relative overflow-hidden">
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

@@ -34,7 +34,7 @@ export default function AreasSection() {
   };
 
   return (
-    <section id="areas" className="section-padding bg-primary border-t border-white/5 relative">
+    <section id="areas" className="section-padding bg-primary border-t border-white/5 relative overflow-hidden">
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
