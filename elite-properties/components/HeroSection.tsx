@@ -87,14 +87,29 @@ export default function HeroSection() {
     };
 
     // Set canvas dimensions to match viewport size
+    let lastWidth = window.innerWidth;
+    let lastHeight = window.innerHeight;
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth * (window.devicePixelRatio || 1);
-      canvas.height = window.innerHeight * (window.devicePixelRatio || 1);
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      
-      // Initial render on resize
-      renderFrame(currentFrameRef.current);
+      const isMobile = window.innerWidth < 768;
+      const widthChanged = window.innerWidth !== lastWidth;
+      const heightChangedSignificantly = Math.abs(window.innerHeight - lastHeight) > 100;
+
+      // On mobile, avoid resizing when address bar hides/shows to prevent lag
+      if (!isMobile || widthChanged || heightChangedSignificantly || !canvas.width) {
+        // Cap DPR to 2 for better mobile performance
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = `${window.innerWidth}px`;
+        canvas.style.height = `${window.innerHeight}px`;
+        
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
+
+        // Initial render on resize
+        renderFrame(currentFrameRef.current);
+      }
     };
 
     window.addEventListener("resize", resizeCanvas);
@@ -130,7 +145,7 @@ export default function HeroSection() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     
     // Initial draw
     handleScroll();
@@ -196,7 +211,7 @@ export default function HeroSection() {
       )}
 
       {/* Pinned Viewport Container */}
-      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden z-10">
+      <div className="sticky top-0 left-0 w-full h-[100dvh] overflow-hidden z-10">
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover" />
 
         {/* Global Dark Gradient Overlay to guarantee text readability */}
